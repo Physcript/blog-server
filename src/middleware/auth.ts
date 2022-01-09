@@ -2,6 +2,8 @@
 
 
 import { Request,Response,NextFunction } from 'express'
+import jwt from 'jsonwebtoken'
+import config from '../config/config'
 
 const getToken = (req:Request,res:Response,next: NextFunction) => {
     const token = req.cookies.token
@@ -9,6 +11,30 @@ const getToken = (req:Request,res:Response,next: NextFunction) => {
     next()
 }
 
-const validateToken = (token:string,res:Response,next:NextFunction) => {
+export const validateToken = (req:Request, res:Response, next:NextFunction) => {
+    const token = req.cookies.token
+
+    const decode = jwt.verify(token,`${config.token.login}`, (err: any,decode: any) => {
+        if(err) 
+        {
+            return null
+        }
+        else 
+        {
+            return decode
+        }
+    })
+
+    if(decode === null) 
+    {
+        res.status(400).json({
+            message: 'Invalid'
+        })
+        return
+    }
     
+    res.locals.token = token
+    res.locals.user = decode
+    next()
+
 }

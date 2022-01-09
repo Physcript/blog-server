@@ -26,3 +26,18 @@ export const loginUSerCon = (req: Request, res: Response) => {
     res.locals.token = undefined
     return
 }
+
+export const validateCon = ( req: Request, res:Response ) => {
+
+    res.status(200).json({
+        message: {
+            user: res.locals.user,
+            token: res.locals.token
+        }
+    })
+    
+    res.locals.user = undefined
+    res.locals.token = undefined
+    return
+    
+}
