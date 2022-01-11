@@ -1,9 +1,11 @@
 
 
 import userRoutes from './user'
+import blogRoutes from './blog'
 
 const router = {
-    userRoutes
+    userRoutes,
+    blogRoutes
 }
 
 export default router

@@ -37,6 +37,7 @@ app.use((req,res,next) => {
 
 // routes
 app.use('/api', routes.userRoutes)
+app.use('/api/blog', routes.blogRoutes)
 
 
 // error
