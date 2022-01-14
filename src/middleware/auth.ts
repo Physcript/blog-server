@@ -13,7 +13,6 @@ const getToken = (req:Request,res:Response,next: NextFunction) => {
 
 export const validateToken = (req:Request, res:Response, next:NextFunction) => {
     const token = req.cookies.token
-
     const decode = jwt.verify(token,`${config.token.login}`, (err: any,decode: any) => {
         if(err) 
         {
@@ -35,6 +34,7 @@ export const validateToken = (req:Request, res:Response, next:NextFunction) => {
     
     res.locals.token = token
     res.locals.user = decode
+
     next()
 
 }

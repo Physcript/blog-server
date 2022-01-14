@@ -11,11 +11,11 @@ const createBlog = async (req: Request, res: Response) => {
 
     console.log('starting')
 
-    const { author,title,content,headline,picture,test } = req.body
+    const { author,title,content,headline,picture } = req.body
 
-    const user = await User.findById(test)
+    const user = await res.locals.user 
     
-    console.log(user)                                                                           
+    console.log(user)                                                                   
 
     const blog = new Blog({
 
@@ -29,6 +29,7 @@ const createBlog = async (req: Request, res: Response) => {
     
     return blog.save()
         .then( (newBlog: IBlog) => {
+            console.log(newBlog)
             return res.status(200).json({
                 message: newBlog
             })
