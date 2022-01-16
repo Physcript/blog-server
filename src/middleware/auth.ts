@@ -7,6 +7,7 @@ import config from '../config/config'
 
 const getToken = (req:Request,res:Response,next: NextFunction) => {
     const token = req.cookies.token
+    console.log(token)
     res.locals.token = token
     next()
 }
