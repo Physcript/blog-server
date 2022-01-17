@@ -14,7 +14,7 @@ const getToken = (req:Request,res:Response,next: NextFunction) => {
 
 export const validateToken = (req:Request, res:Response, next:NextFunction) => {
     const token = req.headers.token
-    const decode = jwt.verify(token,`${config.token.login}`, (err: any,decode: any) => {
+    const decode = jwt.verify(`${token}`,`${config.token.login}`, (err: any,decode: any) => {
         if(err) 
         {
             return null
