@@ -30,7 +30,7 @@ app.set("trust proxy", 1);
 app.use((req,res,next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://suspicious-lamarr-6e5790.netlify.app')
     res.setHeader('Access-Control-Allow-Methods', 'PUT,POST,GET,OPTIONS,PATCH,DELETE')
-    res.setHeader('Access-Control-Allow-headers', 'X-Requested-With,Content-Type')
+    res.setHeader('Access-Control-Allow-headers', 'X-Requested-With,Content-Type,token,Origin')
     res.setHeader('Access-Control-Allow-Credentials', 'true')
     next()
 })
